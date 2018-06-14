@@ -3,6 +3,7 @@ import {Row, Col} from 'antd'
 import ProfileCard from "../common/ProfileCard";
 import ProfileHeader from "./ProfileHeader";
 import ProfileQuickLinks from "./ProfileQuickLinks";
+import WorkoutAdd from '../common/WorkoutAdd';
 
 class Profile extends Component {
     render() {
@@ -17,6 +18,15 @@ class Profile extends Component {
                         <ProfileCard/>
                     </Col>
 
+                    <Col span={24}>
+                        <WorkoutAdd />
+                    </Col>
+                    <Col span={24}>
+                        <WorkoutAdd />
+                    </Col>
+                    <Col span={24}>
+                        <WorkoutAdd />
+                    </Col>
                 </Row>
             </div>
         );
