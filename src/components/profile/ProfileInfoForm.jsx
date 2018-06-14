@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import {Card, Row, Col, Form, Input, Button, Select, DatePicker, Checkbox } from 'antd' ;
+import {Card, Row, Col, Form, Input, Button, Select, Checkbox } from 'antd' ;
 const FormItem = Form.Item;
 const Option = Select.Option;
 const { TextArea } = Input;  
 const CheckboxGroup = Checkbox.Group;
+
+// TODO: fix label text wrap around input
 
 class ProfileInfoForm extends Component {
 

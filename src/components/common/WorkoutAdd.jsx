@@ -4,9 +4,11 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 const { TextArea } = Input
 
-{/* TODO: FIX WIDTH OF TEXT AREA 
+/* 
+TODO: FIX WIDTH OF TEXT AREA 
 TODO: FIX WIDTH OF SELECT INPUT 
- TODO: ADD TABLE */}
+TODO: ADD TABLE 
+*/
  
 class WorkoutAdd extends Component {
 	
@@ -72,8 +74,7 @@ class WorkoutAdd extends Component {
 						        colon={false}
 						        wrapperCol={{span: 24}}
 						    >
-						    {getFieldDecorator('workoutSearchName')
-						    (	
+						    {getFieldDecorator('workoutSearchName')(	
 						        <Input placeholder="Workout Search Name" />
 						    )}
 						    </FormItem>
@@ -85,8 +86,7 @@ class WorkoutAdd extends Component {
 						        colon={false}
 						        wrapperCol={{span: 24}}
 						    >
-						    {getFieldDecorator('audioMessage')
-						    (
+						    {getFieldDecorator('audioMessage')(
 						        <Input placeholder="Message" />
 						    )}
 						    </FormItem>
