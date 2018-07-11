@@ -1,28 +1,31 @@
 import React, {Component} from 'react';
-import {Card} from 'antd'
+import {Card} from 'antd';
+import {Link} from 'react-router-dom' ;
 
 class ProfileQuickLinks extends Component {
     render() {
+
+        let clientId = this.props.id ;
         return (
             <Card title='Quick Links'>
                 <ul className="quick-links">
                     <li>
-                        <a href='/'>Training History</a>
+                        <Link to={`#`}>Training History</Link>
                     </li>
                     <li>
-                        <a href='/'>Nutrition History</a>
+                        <Link to={`/profile/${clientId}/nutrition`}>Nutrition History</Link>
                     </li>
                     <li>
-                        <a href='/'>Tracking History</a>
+                        <Link to='/'>Tracking History</Link>
                     </li>
                     <li>
-                        <a href='/'>Call History</a>
+                        <Link to='/calls'>Call History</Link>
                     </li>
                     <li>
-                        <a href='/'>User Information</a>
+                        <Link to={`/profile/${clientId}/info`}>User Information</Link>
                     </li>
                     <li>
-                        <a href='/'>Chat</a>
+                        <Link to='/'>Chat</Link>
                     </li>
                 </ul>
             </Card>

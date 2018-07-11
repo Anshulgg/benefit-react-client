@@ -3,15 +3,16 @@ import {Card, Row, Col} from 'antd' ;
 
 class ProfileHeader extends Component {
     render() {
+        let client = this.props.client ;
         return (
-            <Card title='Priyanka' className='my-4'>
+            <Card title={client.name} className='my-4'>
                 <Row>
                     <Col span={4}>
-                        Age: <b>31 years</b> <br/>
+                        Age: <b>{client.age} years</b> <br/>
                         Start weight : <b>0.00 kg</b>
                     </Col>
                     <Col span={4}>
-                        Gender: <b>Female </b> <br/>
+                        Gender: <b>{client.gender} </b> <br/>
                         Target Weight: <b>0.00 kg</b>
                     </Col>
                     <Col span={4}>
@@ -20,11 +21,11 @@ class ProfileHeader extends Component {
                     </Col>
                     <Col span={6}>
                         Current Weight : <b>76 kg</b> <br/>
-                        Premium Activation Date : <b>30-12-2016</b>
+                        Premium Activation Date : <b>{client.premium_start}</b>
                     </Col>
                     <Col span={6}>
-                        Premium Plan Start Date : <b>30-12-2016</b> <br/>
-                        Premium Expiry Date : <b>30-12-2016</b>
+                        Premium Plan Start Date : <b>{client.premium_start}</b> <br/>
+                        Premium Expiry Date : <b>{client.premium_expiry}</b>
                     </Col>
                 </Row>
             </Card>

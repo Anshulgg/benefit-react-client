@@ -18,6 +18,19 @@
 
 // Custom CSS. Add CSS Below
 
+.loader-container {
+
+  display: table;
+  width: 100%;
+
+  .loader {
+    padding-top: 100px;
+    width: fit-content;
+    margin: auto;
+  }
+}
+
+
 .custom-layout {
   .logo {
     height: 32px;
@@ -62,4 +75,32 @@
   .time-remaining {
     font-size: 3rem ;
   }
+}
+
+
+.editable-cell {
+  position: relative;
+}
+
+.editable-cell-icon,
+.editable-cell-icon-check {
+  cursor: pointer;
+}
+
+.editable-cell-icon {
+  line-height: 14px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -7px;
+  display: none;
+}
+
+td:hover .editable-cell-icon {
+  display: inline-block;
+}
+
+.editable-cell-icon:hover,
+.editable-cell-icon-check:hover {
+  color: #108ee9;
 }

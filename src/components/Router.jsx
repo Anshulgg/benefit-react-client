@@ -1,25 +1,26 @@
 import React from 'react' ;
-import {Route} from 'react-router-dom' ;
+import {Route,Switch} from 'react-router-dom' ;
 
 import Dashboard from './dashboard/Dashboard' ;
 import Profile from "./profile/Profile";
 import ProfileInfoForm from './profile/ProfileInfoForm';
-import Nutrition from './profile/Nutrition';
+import Nutrition from './nutrition/Nutrition';
 import Expiry from './expiry/Expiry';
 import Timeline from './timeline/Timeline';
 import Calls from './calls/Calls';
 
 const RouterComponent = () => {
     return (
-        <div>
+        <Switch>
             <Route exact path='/' component={Dashboard}/>
             <Route exact path='/expiry' component={Expiry}/>
             <Route exact path='/timeline' component={Timeline}/>
             <Route exact path='/calls' component={Calls}/>
-            <Route exact path='/profile' component={Profile}/>
-            <Route exact path='/profile/info' component={ProfileInfoForm}/>
-            <Route exact path='/profile/nutrition' component={Nutrition}/>
-        </div>
+            <Route exact path='/profile/:id/info' component={ProfileInfoForm}/>
+            <Route exact path='/profile/:id/nutrition' component={Nutrition}/>
+            <Route exact path='/profile/:id' component={Profile}/>
+
+        </Switch>
     )
 };
 

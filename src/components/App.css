@@ -3431,6 +3431,14 @@ a.text-dark:hover, a.text-dark:focus {
 .invisible {
   visibility: hidden !important; }
 
+.loader-container {
+  display: table;
+  width: 100%; }
+  .loader-container .loader {
+    padding-top: 100px;
+    width: fit-content;
+    margin: auto; }
+
 .custom-layout .logo {
   height: 32px;
   margin: 16px; }
@@ -3459,3 +3467,25 @@ a.text-dark:hover, a.text-dark:focus {
 
 .profile-card .time-remaining {
   font-size: 3rem; }
+
+.editable-cell {
+  position: relative; }
+
+.editable-cell-icon,
+.editable-cell-icon-check {
+  cursor: pointer; }
+
+.editable-cell-icon {
+  line-height: 14px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -7px;
+  display: none; }
+
+td:hover .editable-cell-icon {
+  display: inline-block; }
+
+.editable-cell-icon:hover,
+.editable-cell-icon-check:hover {
+  color: #108ee9; }
