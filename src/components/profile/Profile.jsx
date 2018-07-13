@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'antd';
 import {connect} from 'react-redux' ;
-
+import moment from 'moment';
 import ProfileCard from "../common/ProfileCard";
 import ProfileHeader from "./ProfileHeader";
 import ProfileQuickLinks from "./ProfileQuickLinks";
@@ -32,11 +32,30 @@ class Profile extends Component {
         }
     }
 
+    
+
     render() {
 
         console.log("Client in Render", this.props.client);
         let requestClientId = this.props.match.params.id;
+        const createForm = () => {
+            let form = []
+            let today = moment();
 
+            for (let i = 0; i < 3; i++) {
+                let date = today.format('DD-MM-YYYY');
+                console.log(date);
+                
+                form.push((
+                    <Col key={i} span={24}>
+                        <WorkoutAdd date={date} clientId={requestClientId} />
+                    </Col>)
+                )
+                today = today.add('days', 1)
+
+            }
+            return form
+        }
         return (
             <Loader loading={this.state.loading}>
 
@@ -49,15 +68,7 @@ class Profile extends Component {
                     <Col span={12}>
                         <ProfileCard client={this.props.client}/>
                     </Col>
-                    <Col span={24}>
-                        <WorkoutAdd/>
-                    </Col>
-                    <Col span={24}>
-                        <WorkoutAdd/>
-                    </Col>
-                    <Col span={24}>
-                        <WorkoutAdd/>
-                    </Col>
+                    {createForm()}
                 </Row>
             </div>
             </Loader>
