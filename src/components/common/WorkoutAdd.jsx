@@ -1,6 +1,20 @@
 import React, {Component} from 'react';
-import { Card, Row, Col, Form, Input, Button, AutoComplete, Select, Table, InputNumber, Popconfirm, message} from 'antd' ;
-import { addWorkout, addUserWorkout } from "../../actions/workoutAction";
+import {
+    Card,
+    Row,
+    Col,
+    Form,
+    Input,
+    Button,
+    AutoComplete,
+    Select,
+    Table,
+    InputNumber,
+    Popconfirm,
+    message
+} from 'antd' ;
+
+import {addWorkout, addUserWorkout, fetchUserWorkout} from "../../actions/workoutAction";
 import {searchExercises} from "../../actions/exerciseAction";
 import EditableTable from './EditableTable';
 import uuid from 'uuid/v1' ;
@@ -15,7 +29,8 @@ const {TextArea} = Input;
 /* 
 TODO: FIX WIDTH OF TEXT AREA 
 TODO: FIX WIDTH OF SELECT INPUT 
-TODO: ADD TABLE 
+TODO: ADD TABLE
+TODO: FETCH MUST BE CORRECTED WRT TO SEARCH_NAME
 */
 
 let columns = [
@@ -24,21 +39,21 @@ let columns = [
         dataIndex: 'name',
         width: '25%',
         editable: false,
-        inputType : 'text'
+        inputType: 'text'
     },
     {
         title: 'reps',
         dataIndex: 'reps',
         width: '20%',
         editable: true,
-        inputType : 'number'
+        inputType: 'number'
     },
     {
         title: 'rest',
         dataIndex: 'rest',
         width: '20%',
         editable: true,
-        inputType : 'number'
+        inputType: 'number'
     },
     {
         title: 'sets',
@@ -47,10 +62,10 @@ let columns = [
         editable: true,
         inputType: 'number'
     }
-]
+];
 
 class WorkoutAdd extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             exercises: [],
@@ -59,9 +74,54 @@ class WorkoutAdd extends Component {
             exerciseValue: '',
             date: '',
             workout_id: ''
-        }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+
+    componentWillMount = () => {
+
+    };
+
+
+    handleFetch = (e) => {
+        e.preventDefault();
+        const data = {
+            client: this.props.clientId,
+            date: this.props.date
+        };
+        fetchUserWorkout(data).then(result => {
+            console.log(result);
+            this.props.form.setFieldsValue({
+                workoutName: result.workout.name,
+                workoutDescription: result.workout.description,
+                workoutSearchName: result.workout.search_name
+            });
+            let formattedExercise = [];
+            let formattedSelectedExercise = [];
+            result.workout.exercises.forEach(exercise => {
+                formattedExercise.push(exercise.exercise);
+                formattedSelectedExercise.push({
+                    reps: exercise.reps,
+                    rest: exercise.rest,
+                    sets: exercise.sets,
+                    name: exercise.exercise.name,
+                    exercise: exercise.exercise._id,
+                    key: uuid()
+                });
+            });
+
+            this.setState({
+                selectedExercises: formattedSelectedExercise ,
+                exercises: formattedExercise
+            });
+
+
+            message.success("Fetched Workout for User.");
+        }).catch(errorMessage => {
+            message.error(errorMessage);
+        });
+    };
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -69,36 +129,47 @@ class WorkoutAdd extends Component {
             "client": this.props.clientId,
             "date": this.props.date,
             "workout": this.state.workout_id
-        }
-        if (this.state.workout_id !== '') {
-            addUserWorkout(data)
-            message.success('This is a message of success');           
-        }
-        else {
-            message.error('This is a message of error');
+        };
+        if (this.state.workout_id === '') {
+            message.error('Workout Not Saved. Please Save Workout First.');
+            return;
         }
 
-                
+        addUserWorkout(data).then(result => {
+            console.log(result);
+            message.success("Saved Workout for User.");
+        }).catch(errorMessage => {
+            message.error(errorMessage);
+        });
+
+
     };
 
     handleSave = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
+                if (this.state.selectedExercises.length < 1) {
+                    message.error("Exercise List can't be empty");
+                    return;
+                }
                 const data = {
                     "name": values.workoutName,
                     "search_name": values.workoutSearchName,
                     "description": values.workoutDescription,
                     "exercises": this.state.selectedExercises
-                }
-                addWorkout(data).then(res => {                    
+                };
+                addWorkout(data).then(id => {
                     this.setState({
-                        workout_id:  res
-                    }) 
-                })   
+                        workout_id: id
+                    });
+                    message.success("Workout Saved");
+                }).catch(errorMessage => {
+                    message.error(errorMessage);
+                });
             }
         });
-    }
+    };
 
     handleExerciseSearch = (input) => {
         searchExercises(input).then(exercises => {
@@ -106,52 +177,52 @@ class WorkoutAdd extends Component {
                 source: exercises.map(exercise => exercise.name),
                 exercises: exercises
             });
-        })
+        });
     };
 
-    handleExerciseSelect = (input , option) => {
+    handleExerciseSelect = (input, option) => {
         console.log(option);
         // option.props.children = ''
         console.log(input);
-        if(!input){
-            return
+        if (!input) {
+            return;
         }
         let exercise = input;
         let index = this.state.source.indexOf(exercise);
         exercise = this.state.exercises[index];
         exercise = {
-            reps : 10 ,
-            rest : 10 ,
-            sets : 1,
-            name : exercise.name,
-            exercise : exercise._id ,
-            key : uuid()
-        }
+            reps: 10,
+            rest: 10,
+            sets: 1,
+            name: exercise.name,
+            exercise: exercise._id,
+            key: uuid()
+        };
         this.setState({
             selectedExercises: [...this.state.selectedExercises, exercise]
-        })
-        this.props.form.setFieldsValue({'selectExercise' : input})
-        console.log("Value : " , this.props.form.getFieldValue('selectExercise'));
-        this.props.form.setFieldsValue({'selectExercise' : ''})
-        console.log("Value : " , this.props.form.getFieldValue('selectExercise'));
+        });
+        this.props.form.setFieldsValue({'selectExercise': input});
+        console.log("Value : ", this.props.form.getFieldValue('selectExercise'));
+        this.props.form.setFieldsValue({'selectExercise': ''});
+        console.log("Value : ", this.props.form.getFieldValue('selectExercise'));
         console.log(this.state.exercises);
         console.log(this.state.selectedExercises);
-        
+
 
     };
 
     handleChange = (newAdditions) => {
         this.setState({
             selectedExercises: [...this.state.selectedExercises, ...newAdditions],
-            exerciseValue : ''
-        })
-    }
+            exerciseValue: ''
+        });
+    };
 
     onSave = (newData) => {
         this.setState({
-            selectedExercises:newData,
-        })
-    }
+            selectedExercises: newData,
+        });
+    };
 
     render() {
         const {getFieldDecorator} = this.props.form;
@@ -166,24 +237,28 @@ class WorkoutAdd extends Component {
                             <div className="float-right">
                                 <FormItem>
                                     <Button
-                                        style={{ marginRight: '1.2rem' }}
+                                        style={{marginRight: '1.2rem'}}
                                         type="primary"
-                                        htmlType="submit"
+                                        onClick={this.handleFetch}
+                                    >
+                                        Fetch
+                                    </Button>
+                                    <Button
+                                        style={{marginRight: '1.2rem'}}
+                                        type="primary"
                                         onClick={this.handleSave}
                                     >
                                         Save
                                     </Button>
                                     <Button
-                                        style={{ marginRight: '1.2rem' }}
+                                        style={{marginRight: '1.2rem'}}
                                         type="primary"
-                                        htmlType="submit"
                                         onClick={this.handleSubmit}
                                     >
                                         Submit
                                     </Button>
                                     <Button
                                         type="danger"
-                                        htmlType="submit"
                                     >
                                         Delete
                                     </Button>
@@ -200,16 +275,16 @@ class WorkoutAdd extends Component {
                             <FormItem
                                 label="Workout name(visible to user)"
                                 colon={false}
-                                wrapperCol={{ span: 24 }}
+                                wrapperCol={{span: 24}}
                             >
                                 {getFieldDecorator('workoutName', {
-                                    rules: [{ required: true, message: 'Please input workout name!' }],
+                                    rules: [{required: true, message: 'Please input workout name!'}],
                                 })(
-                                    <Input placeholder="Workout Name" />
+                                    <Input placeholder="Workout Name"/>
                                 )}
                             </FormItem>
                         </Col>
-                        
+
 
                         <Col span={8}>
                             <FormItem
@@ -318,7 +393,8 @@ class WorkoutAdd extends Component {
                     </p>
 
                 </Form>
-                <EditableTable dataSource={this.state.selectedExercises} rowKey='key' columns={columns} onSave={this.onSave} onChange={this.handleChange}/>
+                <EditableTable dataSource={this.state.selectedExercises} rowKey='key' columns={columns}
+                               onSave={this.onSave} onChange={this.handleChange}/>
             </Card>
         );
     };

@@ -10,7 +10,7 @@ class ProfileQuickLinks extends Component {
             <Card title='Quick Links'>
                 <ul className="quick-links">
                     <li>
-                        <Link to={`#`}>Training History</Link>
+                        <Link to={`/profile/${clientId}/training`}>Training History</Link>
                     </li>
                     <li>
                         <Link to={`/profile/${clientId}/nutrition`}>Nutrition History</Link>

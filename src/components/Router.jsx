@@ -5,6 +5,7 @@ import Dashboard from './dashboard/Dashboard' ;
 import Profile from "./profile/Profile";
 import ProfileInfoForm from './profile/ProfileInfoForm';
 import Nutrition from './nutrition/Nutrition';
+import Training from './training/Training';
 import Expiry from './expiry/Expiry';
 import Timeline from './timeline/Timeline';
 import Calls from './calls/Calls';
@@ -18,6 +19,7 @@ const RouterComponent = () => {
             <Route exact path='/calls' component={Calls}/>
             <Route exact path='/profile/:id/info' component={ProfileInfoForm}/>
             <Route exact path='/profile/:id/nutrition' component={Nutrition}/>
+            <Route exact path='/profile/:id/training' component={Training}/>
             <Route exact path='/profile/:id' component={Profile}/>
 
         </Switch>

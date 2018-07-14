@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07a4e056-06d0-448f-b978-c3f27d985073" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/actions/clientAction.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/exerciseAction.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/EditableFormRow.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/EditableTable.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/Loader.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/clientReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Router.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Router.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/NutritionCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/NutritionCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/ProfileCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/ProfileCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/WorkoutAdd.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/WorkoutAdd.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/Dashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/profile/Nutrition.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nutrition/Nutrition.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/profile/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile/Profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/profile/ProfileHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile/ProfileHeader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/profile/ProfileQuickLinks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/profile/ProfileQuickLinks.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/server.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/server.config.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -95,18 +75,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exerciseAction.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/actions/exerciseAction.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Router.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Router.jsx">
           <provider selected="true" editor-type-id="text-editor">
@@ -131,14 +99,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NutritionCard.jsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NutritionCard.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/common/NutritionCard.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
+            <state relative-caret-position="1400">
               <caret line="73" column="14" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.config.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/actions/server.config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -222,6 +199,7 @@
         <option value="$PROJECT_DIR$/src/components/profile/Profile.jsx" />
         <option value="$PROJECT_DIR$/src/components/profile/ProfileQuickLinks.jsx" />
         <option value="$PROJECT_DIR$/src/components/common/NutritionCard.jsx" />
+        <option value="$PROJECT_DIR$/src/actions/server.config.js" />
       </list>
     </option>
   </component>
@@ -358,11 +336,14 @@
       <workItem from="1530218478347" duration="5954000" />
       <workItem from="1530251327248" duration="1893000" />
       <workItem from="1530349431509" duration="665000" />
+      <workItem from="1531295750728" duration="157000" />
+      <workItem from="1531303204759" duration="98000" />
+      <workItem from="1531466964701" duration="6000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38824000" />
+    <option name="totallyTimeSpent" value="39085000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -372,10 +353,10 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3278867" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32779622" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -541,9 +522,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/server.config.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
@@ -768,11 +746,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/common/NutritionCard.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
+        <state relative-caret-position="1400">
           <caret line="73" column="14" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/server.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
         </state>
       </provider>
     </entry>
