@@ -8,9 +8,6 @@ import {
     Button,
     AutoComplete,
     Select,
-    Table,
-    InputNumber,
-    Popconfirm,
     message
 } from 'antd' ;
 
@@ -95,7 +92,7 @@ class WorkoutAdd extends Component {
             this.props.form.setFieldsValue({
                 workoutName: result.workout.name,
                 workoutDescription: result.workout.description,
-                workoutSearchName: result.workout.search_name
+                // workoutSearchName: result.workout.search_name
             });
             let formattedExercise = [];
             let formattedSelectedExercise = [];
@@ -112,8 +109,8 @@ class WorkoutAdd extends Component {
             });
 
             this.setState({
-                selectedExercises: formattedSelectedExercise ,
-                exercises: formattedExercise
+                selectedExercises: formattedSelectedExercise,
+                // exercises: formattedExercise
             });
 
 
@@ -233,7 +230,7 @@ class WorkoutAdd extends Component {
                         <Col span={8}>
                             <h4>{this.props.date}</h4>
                         </Col>
-                        <Col span={8} offset={8}>
+                        <Col span={12} offset={4}>
                             <div className="float-right">
                                 <FormItem>
                                     <Button
@@ -241,7 +238,7 @@ class WorkoutAdd extends Component {
                                         type="primary"
                                         onClick={this.handleFetch}
                                     >
-                                        Fetch
+                                        Get Workout
                                     </Button>
                                     <Button
                                         style={{marginRight: '1.2rem'}}
@@ -292,7 +289,9 @@ class WorkoutAdd extends Component {
                                 colon={false}
                                 wrapperCol={{span: 24}}
                             >
-                                {getFieldDecorator('workoutSearchName')(
+                                {getFieldDecorator('workoutSearchName' , {
+                                    rules: [{required: true, message: 'Please enter unique search name!'}],
+                                })(
                                     <Input placeholder="Workout Search Name"/>
                                 )}
                             </FormItem>

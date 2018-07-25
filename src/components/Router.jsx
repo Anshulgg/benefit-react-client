@@ -10,6 +10,9 @@ import Expiry from './expiry/Expiry';
 import Timeline from './timeline/Timeline';
 import Calls from './calls/Calls';
 
+import './App.css';
+
+
 const RouterComponent = () => {
     return (
         <Switch>

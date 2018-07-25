@@ -1,6 +1,6 @@
 import React, {Component} from 'react' ;
 import {Layout, Icon, Menu} from 'antd';
-
+import {Link} from 'react-router-dom' ;
 // import BreadcrumbComponent from './common/breadcrumb.component' ;
 import Router from './Router' ;
 
@@ -16,7 +16,7 @@ class HomeComponent extends Component {
         this.setState({
             collapsed: !this.state.collapsed,
         });
-    }
+    };
 
     render() {
         return (
@@ -30,17 +30,29 @@ class HomeComponent extends Component {
                         <img src="/images/logo.png" className='img-fluid' alt=""/>
                     </div>
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+
                         <Menu.Item key="1">
-                            <Icon type="user"/>
-                            <span>Dashboard</span>
+                            <Link to={'/'}> <Icon type="user"/>
+                                <span>Dashboard</span>
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="4">
+                            <Link to={'/calls'}>
+                                <Icon type="video-camera"/>
+                                <span>Calls</span>
+                            </Link>
                         </Menu.Item>
                         <Menu.Item key="2">
-                            <Icon type="video-camera"/>
-                            <span>Expiry</span>
+                            <Link to={'/expiry'}>
+                                <Icon type="video-camera"/>
+                                <span>Expiry</span>
+                            </Link>
                         </Menu.Item>
                         <Menu.Item key="3">
-                            <Icon type="upload"/>
-                            <span>Timeline</span>
+                            <Link to={'/timeline'}>
+                                <Icon type="upload"/>
+                                <span>Timeline</span>
+                            </Link>
                         </Menu.Item>
                     </Menu>
                 </Sider>
@@ -62,7 +74,7 @@ class HomeComponent extends Component {
             </Layout>
 
 
-        )
+        );
     }
 }
 
