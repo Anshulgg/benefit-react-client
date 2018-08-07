@@ -3,7 +3,7 @@ import axios from 'axios';
 import serverConfig from './server.config';
 
 export function fetchChat(client) {
-    return axios.get(`${serverConfig.base_url}/chat/fetch?timestamp=0&client=5b1bd44433afa84b04ebedca`).then(res => {
+    return axios.get(`${serverConfig.base_url}/api/v1/chat/fetch?timestamp=0&client=${client}`).then(res => {
         // console.log(res.data);
         if (res.data.success) {
             const messages = res.data.data;
